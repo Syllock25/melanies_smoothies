@@ -2,6 +2,8 @@
 
 # Import python packages
 import streamlit as st
+import requests                  # Pythan package to request simple API calls
+
 # Snowpark is a library of 'packages' of functions python/../..
 from snowflake.snowpark.functions import col
 
@@ -15,6 +17,11 @@ st.write(
 # Name box widget
 name_on_order = st.text_input("Name on smoothie")
 st.write("The name of your smoothie will be: ", name_on_order)
+
+# Old / legacy API in course material, but seemingly the one that works
+fruit_nutrition = requests.get("https://fruityvice.com/api/fruit/watermelon")
+st.text(fruit_nutrition)                                                               # Display the API request result
+fn_df = st.dataframe(data=fruit_nutrition.json(), user_container_width=True)           # Make a Streamlit object
 
 # Specific change for Streamlit not in Snowflake SniS
 # Establish connection to Snowpart session (!)
@@ -59,12 +66,4 @@ if ingredients_list:
 
         st.success('Your Smoothie is ordered '+name_on_order+'!', icon="✅")
 
-# New section to display smoothiefroot nutrition information
-# MRS: Hey this is an attempt to use an API
-import requests
-smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-st.text(smoothiefroot_response.json())
-
-distilleries = requests.get("https://whiskyhunter.net/api/distilleries_info/")
-st.text(distilleries.json())
 
