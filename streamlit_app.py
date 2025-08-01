@@ -3,7 +3,6 @@
 # Import python packages
 import streamlit as st
 # Snowpark is a library of 'packages' of functions python/../..
-from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.functions import col
 
 # Write directly to the app
@@ -19,8 +18,9 @@ st.write("The name of your smoothie will be: ", name_on_order)
 
 # st.write("You selected:", option)
 
-session = get_active_session()
-# st.write("Your session:", session)
+# Specific change for Streamlit not in Snowflake SniS
+cnx = st.connection("snowflake")
+session = cnx.session()
 
 # Change display of table to a multi-line selection => selection of fruits
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
