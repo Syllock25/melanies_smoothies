@@ -16,15 +16,15 @@ st.write(
 name_on_order = st.text_input("Name on smoothie")
 st.write("The name of your smoothie will be: ", name_on_order)
 
-# st.write("You selected:", option)
-
 # Specific change for Streamlit not in Snowflake SniS
-cnx = st.connection("snowflake")
+# Establish connection to Snowpart session (!)
+# cnx = st.connection("snowflake")
+ cnx = st.connection("snowflake", type="Snowflake", account="KXOVTJG-QLB45630", user="MICHELRS", password="SnowFlake2025+", warehouse="COMPUTE_WH", database="SMOOTHIES", schema="PUBLIC")
+
 session = cnx.session()
 
 # Change display of table to a multi-line selection => selection of fruits
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
-# st.dataframe(data=my_dataframe, use_container_width=True)
 
 ingredients_list = st.multiselect(
     'Choose up to 5 ingredients: '
@@ -36,14 +36,12 @@ ingredients_list = st.multiselect(
 ingredients_string = ''    # This ensures that python will perceive the variable as a string
 
 # Following syntax means that if ingredients_list is not null, then...
-# Notethat indention is essential in python scripts. And spaces <> tabs
 if ingredients_list:
     # st.write(ingredients_list)
     # st.text(ingredients_list)
     
 # Convert the list from multiselect to a string, we can store for orders
-# Note the indention that ensures this line and the following lines are included in the IF-block
-    # ingredients_string = ''    # This ensures that python will perceive the variable as a string
+    ingredients_string = ''    # This ensures that python will perceive the variable as a string
 
 # for loop construction to list items to string, the block is marked the indention
     for each_fruit in ingredients_list:
