@@ -65,5 +65,8 @@ if ingredients_list:
 # MRS: Hey this is an attempt to use an API
 import requests
 smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-st.text(smoothiefroot_response)
+st.text(smoothiefroot_response.json())
+
+distilleries = requests.get("https://whiskyhunter.net/api/distilleries_info/")
+st.text(distilleries.json())
 
