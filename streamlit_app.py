@@ -20,8 +20,9 @@ st.write("The name of your smoothie will be: ", name_on_order)
 
 # Old / legacy API in course material, but seemingly the one that works
 fruit_nutrition = requests.get("https://fruityvice.com/api/fruit/watermelon")
-st.text(fruit_nutrition)                                                               # Display the API request result
-fn_df = st.dataframe(data=fruit_nutrition.json(), user_container_width=True)           # Make a Streamlit object
+fruit_data = fruit_nutrition.json()                                                    # Extract the data from the json format
+st.text(fruit_data)                                                                    # Display the API request result
+fn_df = st.dataframe(fruit_data, user_container_width=True)                            # Make a Streamlit object
 
 # Specific change for Streamlit not in Snowflake SniS
 # Establish connection to Snowpart session (!)
