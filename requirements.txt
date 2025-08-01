@@ -2,11 +2,11 @@
 snowflake-snowpark-python
 streamlit
 
-# do we need the following script from SiS ?
-name: app_environment
-channels:
-  - snowflake
-dependencies:
-  - python=3.11.*
-  - snowflake-snowpark-python=
-  - streamlit=
+# # do we need the following script from SiS ?
+# name: app_environment
+# channels:
+#   - snowflake
+# dependencies:
+#   - python=3.11.*
+#   - snowflake-snowpark-python=
+#   - streamlit=
