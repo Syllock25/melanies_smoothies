@@ -36,15 +36,7 @@ cnx = st.connection("mrs_session")
 session = cnx.session()
 
 
-cur_user = cnx.query("SELECT 
-                         current_account() as curacc
-                       , current_session() as curses
-                       , current_database() as curdb
-                       , current_warehouse() as curwh
-                       , current_user() as curusr
-                       , current_role() as currole
-                       , current_schema() as curschema"
-                    ;)
+cur_user = cnx.query("SELECT current_account() as curacc, current_session() as curses, current_database() as curdb, current_warehouse() as curwh, current_user() as curusr, current_role() as currole, current_schema() as curschema;")
 st.write(cur_user)
 
 # Change display of table to a multi-line selection => selection of fruits
