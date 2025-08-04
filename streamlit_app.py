@@ -56,8 +56,8 @@ if ingredients_list:
         ingredients_string += each_fruit + ' '   # Note the increment operator, we append 'each_fruit' to 'ingredients_string'
 
         # Map names to search values with the loc function, loc = location, short for "label-based location indexing"
-        search_on=pd_df.loc[pd_df['FRUIT_NAME'] == fruit_chosen, 'SEARCH_ON'].iloc[0]
-        st.write('The search value for ', fruit_chosen,' is ', search_on, '.')
+        search_on=pd_df.loc[pd_df['FRUIT_NAME'] == each_fruit, 'SEARCH_ON'].iloc[0]
+        st.write('The search value for ', each_fruit,' is ', search_on, '.')
 
         # Provide the nutribution details, based on the preferred fruits
         st.subheader(each_fruit + ' Nutrition Information')
