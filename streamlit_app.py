@@ -54,6 +54,12 @@ if ingredients_list:
 # for loop construction to list items to string, the block is marked the indention
     for each_fruit in ingredients_list:
         ingredients_string += each_fruit + ' '   # Note the increment operator, we append 'each_fruit' to 'ingredients_string'
+
+        # Map names to search values with the loc function, loc = location, short for "label-based location indexing"
+        search_on=pd_df.loc[pd_df['FRUIT_NAME'] == fruit_chosen, 'SEARCH_ON'].iloc[0]
+        st.write('The search value for ', fruit_chosen,' is ', search_on, '.')
+
+        # Provide the nutribution details, based on the preferred fruits
         st.subheader(each_fruit + ' Nutrition Information')
         # Old / legacy API in course material, but seemingly the one that works
         fruit_nutrition = requests.get(f"https://fruityvice.com/api/fruit/{each_fruit}")
