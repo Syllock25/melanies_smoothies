@@ -2,6 +2,7 @@
 
 # Import python packages
 import streamlit as st
+import panda as pd               # Panda is commonly referred to as 'pd'
 import requests                  # Pythan package to request simple API calls
 
 # Snowpark is a library of 'packages' of functions python/../..
@@ -29,8 +30,12 @@ session = cnx.session()
 
 # Change display of table to a multi-line selection => selection of fruits
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
-st.dataframe(data=my_dataframe, use_container_width=True)                   # Make a Streamlit object - data frame
-st.stop() ##################################################################################################################### STOP FOR TROUBLESHOOTING
+
+# Convert the Snowpark Dataframe to Pandas Dataframe so we can use the LOC function
+pd_df = my_dataframe.to_pandas()
+st.dataframe(pd_df)
+st.stop() ################################################################################## STOP FOR TROUBLESHOOTING
+
 
 ingredients_list = st.multiselect(
     'Choose up to 5 ingredients: '
