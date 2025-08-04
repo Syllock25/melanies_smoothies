@@ -19,17 +19,6 @@ name_on_order = st.text_input("Name on smoothie")
 st.write("The name of your smoothie will be: ", name_on_order)
 
 if name_on_order:
-    # Old / legacy API in course material, but seemingly the one that works
-    # Branching to allow single fruit lookup and library (all) lookup
-    if name_on_order!='all':
-        fruit_nutrition = requests.get(f"https://fruityvice.com/api/fruit/{name_on_order}")
-        st.text(fruit_nutrition)  
-    else:
-        fruit_nutrition = requests.get(f"https://fruityvice.com/api/fruit/all")
-    
-    fruit_data = fruit_nutrition.json()                                                    # Extract the data from the json format
-    st.text(fruit_data)                                                                    # Display the API request result
-    fruity_df = st.dataframe(data=fruit_data, use_container_width=True)                   # Make a Streamlit object
 
 # Specific change for Streamlit not in Snowflake SniS
 # Establish connection to Snowpart session (!)
@@ -60,6 +49,10 @@ if ingredients_list:
 # for loop construction to list items to string, the block is marked the indention
     for each_fruit in ingredients_list:
         ingredients_string += each_fruit + ' '   # Note the increment operator, we append 'each_fruit' to 'ingredients_string'
+        # Old / legacy API in course material, but seemingly the one that works
+        fruit_nutrition = requests.get(f"https://fruityvice.com/api/fruit/{each_fruit}")
+        fruit_data = fruit_nutrition.json()                                                   # Extract the data from the json format
+        fruity_df = st.dataframe(data=fruit_data, use_container_width=True)                   # Make a Streamlit object - data frame
 
 # Prepare insertion of orders in table, version two with order name
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients, name_on_order)
