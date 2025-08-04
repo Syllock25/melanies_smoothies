@@ -44,6 +44,9 @@ cnx = st.connection("snowflake")
  #                    schema="PUBLIC"
  #                   )
 
+cur_user = cnx.query("SELECT CURRENT_USER(), CURRENT_ROLE();")
+st.write(cur_user)
+
 session = cnx.session()
 
 # Change display of table to a multi-line selection => selection of fruits
