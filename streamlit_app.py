@@ -28,7 +28,9 @@ session = cnx.session()
 #st.write(cur_user)
 
 # Change display of table to a multi-line selection => selection of fruits
-my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
+my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON')
+st.dataframe(data=my-dataframe, use_container_width = True)
+st.stop() ##################################################################################################################### STOP FOR TROUBLESHOOTING
 
 ingredients_list = st.multiselect(
     'Choose up to 5 ingredients: '
@@ -47,7 +49,7 @@ if ingredients_list:
 # for loop construction to list items to string, the block is marked the indention
     for each_fruit in ingredients_list:
         ingredients_string += each_fruit + ' '   # Note the increment operator, we append 'each_fruit' to 'ingredients_string'
-        st.subheader(each_fruit + ' Nutrition Informatin')
+        st.subheader(each_fruit + ' Nutrition Information')
         # Old / legacy API in course material, but seemingly the one that works
         fruit_nutrition = requests.get(f"https://fruityvice.com/api/fruit/{each_fruit}")
         fruit_data = fruit_nutrition.json()                                                   # Extract the data from the json format
