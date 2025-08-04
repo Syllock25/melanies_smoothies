@@ -35,9 +35,9 @@ if name_on_order:
 cnx = st.connection("mrs_session")
 session = cnx.session()
 
-
-cur_user = cnx.query("SELECT current_account() as curacc, current_session() as curses, current_database() as curdb, current_warehouse() as curwh, current_user() as curusr, current_role() as currole, current_schema() as curschema;")
-st.write(cur_user)
+# Confirm that connection to Snowflake functions
+# cur_user = cnx.query("SELECT current_account() as curacc, current_session() as curses, current_database() as curdb, current_warehouse() as curwh, current_user() as curusr, current_role() as currole, current_schema() as curschema;")
+#st.write(cur_user)
 
 # Change display of table to a multi-line selection => selection of fruits
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
