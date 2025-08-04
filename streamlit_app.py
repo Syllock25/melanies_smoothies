@@ -1,9 +1,9 @@
 # CUSTOM SMOOTHIE ORDER FORM
 
 # Import python packages
+import panda as pd               # Panda is commonly referred to as 'pd'
 import streamlit as st
 import requests                  # Pythan package to request simple API calls
-import panda as pd               # Panda is commonly referred to as 'pd'
 
 # Snowpark is a library of 'packages' of functions python/../..
 from snowflake.snowpark.functions import col
