@@ -32,7 +32,7 @@ if name_on_order:
 
 # Specific change for Streamlit not in Snowflake SniS
 # Establish connection to Snowpart session (!)
-cnx = st.connection("snowflake", type="snowflake")
+cnx = st.connection("snowflake")
  # cnx = st.connection(
  #                    name="Snowflake",
  #                    type="Snowflake", 
