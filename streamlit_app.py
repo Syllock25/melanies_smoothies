@@ -34,6 +34,7 @@ if name_on_order:
 # Establish connection to Snowpart session (!)
 # cnx = st.connection("snowflake")
 cnx = st.connection(
+                    name="Snowflake",
                     type="Snowflake", 
                     account="KXOVTJG-QLB45630", 
                     user="MICHELRS", 
