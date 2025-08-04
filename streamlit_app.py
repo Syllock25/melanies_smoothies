@@ -1,7 +1,7 @@
 # CUSTOM SMOOTHIE ORDER FORM
 
 # Import python packages
-import panda as pd               # Panda is commonly referred to as 'pd'
+import pandas as pd              # Panda is commonly referred to as 'pd'
 import streamlit as st
 import requests                  # Pythan package to request simple API calls
 
