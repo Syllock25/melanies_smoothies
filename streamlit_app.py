@@ -23,7 +23,7 @@ if name_on_order:
     # Branching to allow single fruit lookup and library (all) lookup
     if name_on_order!='All':
         fruit_nutrition = requests.get(f"https://fruityvice.com/api/fruit/{name_on_order}")
-    else
+    else:
         fruit_nutrition = requests.get(f"https://fruityvice.com/api/all")
     
     fruit_data = fruit_nutrition.json()                                                    # Extract the data from the json format
