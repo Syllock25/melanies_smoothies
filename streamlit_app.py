@@ -62,7 +62,7 @@ if ingredients_list:
         # Provide the nutribution details, based on the preferred fruits
         st.subheader(each_fruit + ' Nutrition Information')
         # Old / legacy API in course material, but seemingly the one that works
-        fruit_nutrition = requests.get(f"https://fruityvice.com/api/fruit/{each_fruit}")
+        fruit_nutrition = requests.get(f"https://fruityvice.com/api/fruit/{search_on}")
         fruit_data = fruit_nutrition.json()                                                   # Extract the data from the json format
         fruity_df = st.dataframe(data=fruit_data, use_container_width=True)                   # Make a Streamlit object - data frame
 
