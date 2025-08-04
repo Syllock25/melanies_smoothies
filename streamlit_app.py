@@ -18,8 +18,6 @@ st.write(
 name_on_order = st.text_input("Name on smoothie")
 st.write("The name of your smoothie will be: ", name_on_order)
 
-if name_on_order:
-
 # Specific change for Streamlit not in Snowflake SniS
 # Establish connection to Snowpart session (!)
 cnx = st.connection("mrs_session")
