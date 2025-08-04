@@ -1,8 +1,8 @@
 # requirements.txt
 snowflake-snowpark-python
-panda
 streamlit
 requests
+panda
 
 # # do we need the following script from SiS ?
 # name: app_environment
