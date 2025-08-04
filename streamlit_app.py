@@ -33,23 +33,19 @@ if name_on_order:
 # Specific change for Streamlit not in Snowflake SniS
 # Establish connection to Snowpart session (!)
 cnx = st.connection("mrs_session")
- # cnx = st.connection(
- #                    name="Snowflake",
- #                    type="Snowflake", 
- #                    account="KXOVTJG-QLB45630", 
- #                    user="MICHELRS", 
- #                    password="SnowFlake2025+", 
- #                    warehouse="COMPUTE_WH", 
- #                    database="SMOOTHIES", 
- #                    schema="PUBLIC"
- #                   )
-
-cur_user = cnx.query("SELECT CURRENT_USER(), CURRENT_ROLE();")
-st.write(cur_user)
-
 session = cnx.session()
 
-st.stop()
+
+cur_user = cnx.query("SELECT 
+                         current_account() as curacc
+                       , current_session() as curses
+                       , current_database() as curdb
+                       , current_warehouse() as curwh
+                       , current_user() as curusr
+                       , current_role() as currole
+                       , current_schema() as curschema"
+                    ;)
+st.write(cur_user)
 
 # Change display of table to a multi-line selection => selection of fruits
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
