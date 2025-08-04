@@ -28,8 +28,8 @@ session = cnx.session()
 #st.write(cur_user)
 
 # Change display of table to a multi-line selection => selection of fruits
-my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON')
-dummy = st.dataframe(data=my_dataframe, use_container_width=True)                   # Make a Streamlit object - data frame
+my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
+st.dataframe(data=my_dataframe, use_container_width=True)                   # Make a Streamlit object - data frame
 st.stop() ##################################################################################################################### STOP FOR TROUBLESHOOTING
 
 ingredients_list = st.multiselect(
