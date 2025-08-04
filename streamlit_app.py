@@ -21,10 +21,11 @@ st.write("The name of your smoothie will be: ", name_on_order)
 if name_on_order:
     # Old / legacy API in course material, but seemingly the one that works
     # Branching to allow single fruit lookup and library (all) lookup
-    if name_on_order!='All':
+    if name_on_order!='all':
         fruit_nutrition = requests.get(f"https://fruityvice.com/api/fruit/{name_on_order}")
+        st.text(fruit_nutrition)  
     else:
-        fruit_nutrition = requests.get(f"https://fruityvice.com/api/all")
+        fruit_nutrition = requests.get(f"https://fruityvice.com/api/fruit/all")
     
     fruit_data = fruit_nutrition.json()                                                    # Extract the data from the json format
     st.text(fruit_data)                                                                    # Display the API request result
