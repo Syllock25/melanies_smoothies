@@ -47,6 +47,7 @@ if ingredients_list:
 # for loop construction to list items to string, the block is marked the indention
     for each_fruit in ingredients_list:
         ingredients_string += each_fruit + ' '   # Note the increment operator, we append 'each_fruit' to 'ingredients_string'
+        st.subheader(each_fruit + ' Nutrition Informatin')
         # Old / legacy API in course material, but seemingly the one that works
         fruit_nutrition = requests.get(f"https://fruityvice.com/api/fruit/{each_fruit}")
         fruit_data = fruit_nutrition.json()                                                   # Extract the data from the json format
