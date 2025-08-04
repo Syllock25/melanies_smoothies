@@ -48,12 +48,9 @@ ingredients_list = st.multiselect(
     , max_selections=5            # We want 5 fruits, but maybe the system counts 0, 1, 2 ...
 )
 
-# Initialize the order list, before entering the IF- and FOR-blocks.
-ingredients_string = ''    # This ensures that python will perceive the variable as a string
-
 # Following syntax means that if ingredients_list is not null, then...
 if ingredients_list:
-    # st.write(ingredients_list)
+    st.write(ingredients_list)
     # st.text(ingredients_list)
     
 # Convert the list from multiselect to a string, we can store for orders
@@ -74,5 +71,3 @@ if ingredients_list:
         session.sql(my_insert_stmt).collect()
 
         st.success('Your Smoothie is ordered '+name_on_order+'!', icon="✅")
-
-
